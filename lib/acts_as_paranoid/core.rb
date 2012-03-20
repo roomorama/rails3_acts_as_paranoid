@@ -151,7 +151,7 @@ module ActsAsParanoid
     def deleted?
       !paranoid_value.nil?
     end
-    alias_method :destroyed?, :deleted?
+    #alias_method :destroyed?, :deleted?
 
     private
 
