@@ -37,7 +37,7 @@ module ActsAsParanoid
     
     # Magic!
     #default_scope { where(paranoid_default_scope_sql) }
-    scope :active, { where(paranoid_default_scope_sql) }
+    scope :active, lambda { where(paranoid_default_scope_sql) }
 
     if paranoid_configuration[:column_type] == 'time'
       scope :deleted_inside_time_window, lambda {|time, window|
