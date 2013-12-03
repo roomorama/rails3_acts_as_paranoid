@@ -34,7 +34,7 @@ module ActsAsParanoid
       end
 
       def paranoid_default_scope_sql
-        self.scoped.table[paranoid_column].eq(nil).to_sql
+        self.all.table[paranoid_column].eq(nil).to_sql
       end
 
       def paranoid_column
@@ -117,7 +117,7 @@ module ActsAsParanoid
         next unless reflection.klass.paranoid?
 
         scope = reflection.klass.only_deleted
-        
+
         # Merge in the association's scope
         scope = scope.merge(association(reflection.name).association_scope)
 
@@ -132,13 +132,13 @@ module ActsAsParanoid
         end
       end
     end
-    
+
     def destroy_dependent_associations!
       self.class.dependent_associations.each do |reflection|
         next unless reflection.klass.paranoid?
 
         scope = reflection.klass.only_deleted
-       
+
         # Merge in the association's scope
         scope = scope.merge(association(reflection.name).association_scope)
 
