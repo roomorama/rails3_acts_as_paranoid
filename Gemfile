@@ -4,7 +4,7 @@ gem "activerecord", "~>3.2"
 
 # Development dependencies
 gem "rake"
-gem "activesupport", "~>3.2"
+gem "activesupport", "~> 4.0"
 
 platforms :ruby do
   gem "sqlite3"
